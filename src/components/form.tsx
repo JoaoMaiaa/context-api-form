@@ -1,4 +1,9 @@
+import { useContext } from 'react'
+
+import { LoginContext } from '../contexts/loginContext'
+
 const Form = () => {
+  const { email, setEmail, setShowProfile } = useContext(LoginContext)
   return (
     <>
       <div
@@ -6,7 +11,7 @@ const Form = () => {
           borderRadius: '2px',
           width: '400px',
           backgroundColor: '#252430',
-          padding: '10px'
+          padding: '20px'
         }}
       >
         <h2
@@ -21,6 +26,8 @@ const Form = () => {
           <input
             type="email"
             placeholder="Seu email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             style={{
               color: '#252430',
               fontFamily: 'sans-serif',
@@ -30,7 +37,7 @@ const Form = () => {
               width: '300px',
               marginTop: '25px',
               display: 'block',
-              margin: 'auto',
+              margin: '0 auto',
               border: 'none'
             }}
           />
@@ -46,18 +53,20 @@ const Form = () => {
               marginTop: '30px',
               width: '300px',
               display: 'block',
-              margin: 'auto',
+              margin: '35px auto',
               border: 'none'
             }}
           />
           <button
             type="submit"
+            onClick={() => {
+              setShowProfile(true)
+            }}
             style={{
               fontFamily: 'sans-serif',
               borderRadius: '2px',
               padding: '10px',
               marginLeft: '40px',
-              marginTop: '15px',
               marginBottom: '15px',
               border: 'none',
               cursor: 'pointer',
